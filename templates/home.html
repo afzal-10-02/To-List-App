@@ -1,0 +1,67 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+</head>
+<style>
+    .taskbox{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 5rem;
+    }
+    .task{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .incompleted_task{
+        list-style-type: None;
+    }
+</style>
+<body>
+
+    {% include 'particles/header.html' %}
+
+    <main>
+        <div class="taskbox">
+            <div class="complete_task task">
+
+                <h2 style="color: red;">InCompleted Tasks</h2>
+                <form action="" method="post"></form>
+                    <ul class="incompleted_task"> 
+                        {% for task in incompleted_task %}
+                            <li>
+                                <label>
+                                    <input type="checkbox" name="task" value="{{task}}">
+                                    {{task}}
+                                </label>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </form>
+
+            </div>
+            
+            <div class="todotask task">
+                <h2 style="color: green;">Completed Task</h2>
+                <ul>
+                    {% for task in completed_task %}
+                        <li>{{task}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+    </main>
+
+    {% include 'particles/footer.html' %}
+
+</body>
+</html>
